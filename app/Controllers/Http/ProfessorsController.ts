@@ -1,6 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Professor from 'App/Models/Professor';
 import Hash from '@ioc:Adonis/Core/Hash'
+import { professores } from 'App/extraClasses/error';
 
 
 
@@ -11,8 +12,12 @@ export default class ProfessorsController {
 
   ////////////SEARCH ALL PROFESSOR
   public async index({}: HttpContextContract){
+    try{
+      return  await Professor.all();
+    }catch(e){
+      professores()
+    }
 
-    return  await Professor.all();
   }
 
 
@@ -22,9 +27,12 @@ export default class ProfessorsController {
   public async byId({request}: HttpContextContract){
 
     const professor: Professor|null = await Professor.find(request.param('id'));
-    return professor;
 
-   }
+    try{
+      return professor;
+    }catch(e){
+      professores()
+    }}
 
 
 
@@ -55,9 +63,13 @@ export default class ProfessorsController {
 
     professor!.hash = hash_generatefinally!;  // HASH WAS GENERERATED BY USER NAME + EMAIL
 
+    try{
+      professor!.save();
+      return professor;
+    }catch(e){
+      professores()
+    }
 
-    professor!.save();
-    return professor;
 
    }
 
@@ -74,9 +86,13 @@ export default class ProfessorsController {
     professor!.email       = request.input('email');
     professor!.nascimento  = request.input('nascimento');
 
-    professor!.save();
+    try{
+      professor!.save();
+      return professor;
+    }catch(e){
+      professores()
+    }
 
-    return professor;
 
    }
 
@@ -90,8 +106,13 @@ export default class ProfessorsController {
   public async destroy({request}: HttpContextContract){
 
     const professor: Professor|null = await Professor.find(request.param('id'))
-    professor!.delete();
-    return professor;
+    try{
+      professor!.delete();
+      return professor;
+    }catch(e){
+      professores()
+    }
+
 
 
   }

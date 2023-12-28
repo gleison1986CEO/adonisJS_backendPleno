@@ -1,8 +1,8 @@
 # BACKENDPLENO
 ## ADONIS JS
-- adonisJS webapi
+- adonisJS Webapi
 - sqlserver Database
-- linux server
+- linux Server
 ---
 ## REQUISITOS
 - sudo apt install nodejs

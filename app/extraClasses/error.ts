@@ -24,3 +24,13 @@ export async function salas(){
 
 
 }
+
+
+
+export async function errorFatal(error){
+
+  const errorFatal = 'error Fatal' + error;
+  return errorFatal;
+
+
+}

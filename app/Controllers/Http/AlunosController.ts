@@ -1,13 +1,19 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Aluno from 'App/Models/Aluno';
 import Hash from '@ioc:Adonis/Core/Hash'
+import { alunos } from 'App/extraClasses/error';
 
 
 export default class AlunosController {
 
    ////////////SEARCH ALL ALUNO
    public async index({}: HttpContextContract){
-    return  await Aluno.all();
+    try{
+      return  await Aluno.all();
+    }catch(e){
+      alunos()
+    }
+
    }
 
 
@@ -15,7 +21,12 @@ export default class AlunosController {
    public async byId({request}: HttpContextContract){
 
     const aluno: Aluno|null = await Aluno.find(request.param('id'));
-    return aluno;
+    try{
+      return aluno;
+    }catch(e){
+      alunos()
+    }
+
 
    }
 
@@ -43,9 +54,13 @@ export default class AlunosController {
 
     aluno!.hash = hash_generatefinally!;  // HASH WAS GENERERATED BY USER NAME + EMAIL
 
+    try{
+      aluno!.save();
+      return aluno;
+    }catch(e){
+      alunos()
+    }
 
-    aluno!.save();
-    return aluno;
 
 
    }
@@ -63,9 +78,14 @@ export default class AlunosController {
     aluno!.email       = request.input('email');
     aluno!.nascimento  = request.input('nascimento');
 
-    aluno!.save();
+    try{
+      aluno!.save();
 
-    return aluno;
+      return aluno;
+    }catch(e){
+      alunos()
+    }
+
 
    }
 
@@ -76,8 +96,14 @@ export default class AlunosController {
    public async destroy({request}: HttpContextContract){
 
     const aluno: Aluno|null = await Aluno.find(request.param('id'))
-    aluno!.delete();
-    return aluno;
+    try{
+      aluno!.delete();
+      return aluno;
+    }catch(e){
+      alunos()
+    }
+
+
 
 
    }

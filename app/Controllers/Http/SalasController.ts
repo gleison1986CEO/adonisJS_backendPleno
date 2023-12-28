@@ -4,6 +4,7 @@ import Hash from '@ioc:Adonis/Core/Hash'
 import { limit } from 'App/extraClasses/limit';
 import Professor from 'App/Models/Professor';
 import Aluno from 'App/Models/Aluno';
+import { salas } from 'App/extraClasses/error';
 
 export default class SalasController {
 
@@ -63,10 +64,6 @@ export default class SalasController {
 
 
 
-
-
-
-
   //////////////SAVE NEW SALAS
   public async store({request}: HttpContextContract){
 
@@ -91,18 +88,24 @@ export default class SalasController {
     sala_!.hash = hash_generatefinally!;  // HASH WAS GENERERATED BY USER NAME + EMAIL
 
     const salaCapacidade: Sala|null  = await Sala.findBy('numero', sala_!.numero);
-    if(salaCapacidade!.capacidade > 1){
-      limit(sala_!.numero)
-      sala_!.save();
-      const result =  {
-          "data":"aluno adicionado a sala de aula com sucesso",
-          "result":sala_
-      }
-      return result;
-    }else{
-      return "você nao pode criar mais alunos, limite de capacidade de sala excedido"
-    }}
+    try {
+            if(salaCapacidade!.capacidade > 1){
+              limit(sala_!.numero)
+              sala_!.save();
+              const result =  {
+                  "data":"aluno adicionado a sala de aula com sucesso",
+                  "result":sala_
+              }
+              return result;
+            } else{
+                return "você nao pode criar mais alunos, limite de capacidade de sala excedido"
+            }
 
+      } catch (e) {
+
+           salas()
+
+     }}
 
 
 
@@ -112,9 +115,11 @@ export default class SalasController {
      public async destroy({request}: HttpContextContract){
 
       const aluno: Sala|null = await Sala.findBy('aluno_id', request.param('aluno_id'))
-      aluno!.delete();
-      return aluno;
+      try{
 
+        aluno!.delete();
+        return aluno;
+      }catch(e){
+        salas()
 
-     }
-  }
+      }}}
