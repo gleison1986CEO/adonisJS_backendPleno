@@ -1,0 +1,152 @@
+////SALAS
+
+curl --request DELETE \
+--url http://127.0.0.1:3333/api/salas/aluno/destroy/3 \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt
+
+
+
+curl --request GET \
+--url http://127.0.0.1:3333/api/salas \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt
+
+
+
+
+curl --request POST \
+--url http://127.0.0.1:3333/api/salas/store \
+--header 'Content-Type: application/json' \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt \
+--data '{
+"professor_id": 1,
+"aluno_id": 4,
+"numero": 216,
+"capacidade": 2,
+"disponibilidade": true
+}'
+
+
+
+
+
+
+//PROFESSORES
+
+
+curl --request GET \
+--url http://127.0.0.1:3333/api/professores \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt
+
+
+
+
+
+curl --request POST \
+--url http://127.0.0.1:3333/api/professores/store \
+--header 'Content-Type: application/json' \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt \
+--data '{
+"nome": "daniele souzas",
+"email": "danysmsilvsa.1@gmail.com",
+"nascimento": "2023/09/08"
+}'
+
+
+
+
+curl --request PUT \
+--url http://127.0.0.1:3333/api/professores/1 \
+--header 'Content-Type: application/json' \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt \
+--data '{
+"nome": "gleison silveira professor",
+"email": "lionmonkeydesignapp@gmail.com",
+"nascimento": "2023/09/08"
+}'
+
+
+
+
+
+curl --request DELETE \
+--url http://127.0.0.1:3333/api/professores/destroy/1 \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt
+
+
+
+
+
+curl --request GET \
+--url http://127.0.0.1:3333/api/professores/2 \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt
+
+
+
+
+
+
+
+////// ALUNOS
+
+curl --request GET \
+--url http://127.0.0.1:3333/api/alunos \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt
+
+
+
+
+
+
+curl --request POST \
+--url http://127.0.0.1:3333/api/alunos/store \
+--header 'Content-Type: application/json' \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt \
+--data '{
+"nome": "gleison silveira",
+"email": "devglerrtyison@gmail.om",
+"nascimento": "2023/09/08"
+}'
+
+
+
+
+
+
+curl --request PUT \
+--url http://127.0.0.1:3333/api/alunos/1 \
+--header 'Content-Type: application/json' \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt \
+--data '{
+"nome": "gleison silveira",
+"email": "lionmonkeydesignapp@gmail.com",
+"nascimento": "2023/09/08"
+}'
+
+
+
+
+
+curl --request DELETE \
+--url http://127.0.0.1:3333/api/alunos/destroy/14 \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt
+
+
+
+
+
+curl --request GET \
+--url http://127.0.0.1:3333/api/alunos/2 \
+--header 'User-Agent: insomnia/2023.5.8' \
+--cookie __profilin=p%253Dt
