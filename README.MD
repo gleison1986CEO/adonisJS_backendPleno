@@ -56,6 +56,11 @@
 
 
 
+## CONIFG DATABASE ON .ENV
+- write all data need for connect to a database..
+---
+
+
 ## SQLSERVER WITH LINUX
 - sudo apt-get update
 - curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
@@ -103,3 +108,10 @@
 ## RUN PROJETC LOCALLY
 - npm run dev
 ---
+
+## CURL && INSOMINIA
+- pasta ./data
+---
+
+
+
