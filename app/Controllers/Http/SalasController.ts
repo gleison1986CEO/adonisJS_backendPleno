@@ -10,13 +10,6 @@ export default class SalasController {
 
 
 
-
-
-
-
-
-
-
   ////////////LIST SALAS
   public async index({}: HttpContextContract){
 
@@ -98,7 +91,7 @@ export default class SalasController {
               }
               return result;
             } else{
-                return "você nao pode criar mais alunos, limite de capacidade de sala excedido"
+                return "você nao pode adicionar mais alunos a esta sala, limite de capacidade de sala excedido"
             }
 
       } catch (e) {

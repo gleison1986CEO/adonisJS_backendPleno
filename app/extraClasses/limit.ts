@@ -1,6 +1,7 @@
 import Sala from 'App/Models/Sala'
 import { salas } from './error';
 
+/////// CLASS FOR LIMITE UPDATE CLASSROOM ALLOCATION
 export async function limit(sala_id){
 
   const sala: Sala|null  = await Sala.findBy('numero', sala_id);

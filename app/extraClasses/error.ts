@@ -1,3 +1,5 @@
+///////// ERRORS CLASS
+
 export async function professores(){
 
   const errorProfessores  = 'error professores, tente novamente';
