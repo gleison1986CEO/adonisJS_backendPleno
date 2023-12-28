@@ -17,12 +17,6 @@ GO
 -- ##################
 
 
---############################---
-SELECT name FROM sys.tables
-SELECT name FROM master.dbo.sysdatabases
---############################---
-
-
 -- ##################
 SET ANSI_NULLS ON
 GO

@@ -73,7 +73,7 @@
 ---
 
 
-## DEPENDÊNCIAS
+## DEPENDENCIES FOR LINUX SERVER
 - libc6
 - libgcc1
 - libgcc-s1
@@ -92,3 +92,14 @@
 - sudo ln -sfn /opt/mssql-tools/bin/bcp* /usr/local/bin/bcp
 ---
 
+
+## BUILD PROJECT
+-  npm run build
+-  cd build
+-  npm ci --production
+-  node server.js
+---
+
+## RUN PROJETC LOCALLY
+- npm run dev
+---
